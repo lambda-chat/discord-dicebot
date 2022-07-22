@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "package-name"
+version = "0.1.0"
+description = "A Python Project Template."
+authors = [
+    "lambda-chat <chat.algebrique@gmail.com>",
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+isort = "^5.9.3"
+pytest = "^6.2.5"
+pyproject-flake8 = "^0.0.1-alpha.2"
+black = "^21.10b0"
+
+[build-system]
+requires = [
+    "poetry_core>=1.0.0",
+]
+build-backend = "poetry.core.masonry.api"
+
+[tool.flake8]
+## http://flake8.readthedocs.org/en/latest/warnings.html
+## http://pep8.readthedocs.org/en/latest/intro.html#error-codes
+ignore = ["W503", "W504"]
+max-line-length = 99
+exclude = [
+    ".git",
+    "__pycache__",
+    "old",
+    "build",
+    "dist",
+    ".venv",
+    "venv",
+]
+
+[tool.black]
+line-length = 99
+exclude = '''
+(
+    migrations
+    | .mypy_cache
+    | .pytest_cache
+    | .tox
+    | .venv
+)
+'''
+
+[tool.pyright]
+include = [
+    "package_name",
+    "tests",
+]
+exclude = [
+    ".venv",
+    "**/__pycache__",
+]
+ignore = []
+stubPath = ""
+reportMissingImports = true
+reportMissingTypeStubs = false
+pythonVersion = "^3.9"
+executionEnvironments = []
+
+[tool.isort]
+include_trailing_comma = true
+line_length = 99
+multi_line_output = 3
+skip_glob = []
