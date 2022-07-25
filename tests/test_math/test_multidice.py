@@ -32,7 +32,7 @@ def test_parse(expr: str, expected: tuple[int, int]) -> None:
 
 
 @pytest.mark.parametrize(
-    ("rep", "condition"),
+    ("expr", "condition"),
     [
         ("1D1", lambda res: 1 <= res <= 1),
         ("1d2", lambda res: 1 <= res <= 2),
@@ -40,5 +40,5 @@ def test_parse(expr: str, expected: tuple[int, int]) -> None:
         ("20d10", lambda res: 20 <= res <= 200),
     ],
 )
-def test_roll_by_expr(rep: str, condition: Callable[[int], bool]) -> None:
-    assert condition(roll_by_expr(rep))
+def test_roll_by_expr(expr: str, condition: Callable[[int], bool]) -> None:
+    assert condition(roll_by_expr(expr))
