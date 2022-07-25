@@ -170,3 +170,6 @@ cython_debug/
 .cache
 
 ignore/
+
+# for CDK
+cdk/node_modules
