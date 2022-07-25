@@ -168,3 +168,5 @@ cython_debug/
 .devcontainer/devcontainer.json
 .devcontainer/docker-compose.yml
 .cache
+
+ignore/
