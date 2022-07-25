@@ -5,7 +5,7 @@
 #   (fish) $ env PASSWORD=password .devcontainer/postCreateCommand.sh
 
 # chown dist/ volume
-echo $PASSWORD | sudo --stdin chown -R docker-user:docker /workspace/WORKSPACE/dist/
+echo $PASSWORD | sudo --stdin chown -R docker-user:docker /workspace/discord-dicebot/dist/
 
 # gpg setting
 echo $PASSWORD | sudo --stdin mkdir -p /opt/homebrew/bin

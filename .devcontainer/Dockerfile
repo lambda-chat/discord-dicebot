@@ -1,6 +1,6 @@
 FROM python:3.9.12-bullseye
 
-WORKDIR /workspace/WORKSPACE
+WORKDIR /workspace/discord-dicebot
 
 # To install github cli
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
@@ -28,7 +28,7 @@ RUN apt-get update \
 # Create a user (in docker group and sudoers)
 #   We will set a loose password so that we can use `sudo` in the container in emergency.
 #   In the usual case, we should modify this Dockerfile and rebuild it.
-ARG PASSWORD=password
+ARG PASSWORD=asd
 ARG USER=docker-user
 ARG GROUP=docker
 ARG GID=1000

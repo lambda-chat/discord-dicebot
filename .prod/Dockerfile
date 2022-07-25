@@ -9,8 +9,8 @@ FROM python:3.9.12-bullseye
 #     $ docker compose down
 
 # Copy files
-COPY . /src/WORKSPACE
-WORKDIR /src/WORKSPACE
+COPY . /src/discord-dicebot
+WORKDIR /src/discord-dicebot
 
 # Create a user
 ARG USER=docker-user

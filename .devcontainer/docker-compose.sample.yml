@@ -7,9 +7,9 @@ services:
     volumes:
       - type: bind
         source: ../
-        target: /workspace/WORKSPACE
+        target: /workspace/discord-dicebot
       - type: volume
-        target: /workspace/WORKSPACE/dist/
+        target: /workspace/discord-dicebot/dist/
       - type: bind
         source: ~/.gitconfig
         target: /home/docker-user/.gitconfig
