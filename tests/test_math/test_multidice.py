@@ -2,7 +2,7 @@ from collections.abc import Callable
 
 import pytest
 
-from dicebot.math.multidice import roll, roll_by_str
+from dicebot.math.multidice import parse, roll, roll_by_str
 
 
 @pytest.mark.parametrize(
@@ -16,6 +16,16 @@ from dicebot.math.multidice import roll, roll_by_str
 )
 def test_roll(num: int, face: int, condition: Callable[[int], bool]):
     assert condition(roll(num, face))
+
+
+@pytest.mark.parametrize(
+    ("expr", "expected"),
+    [
+        ("2d6", (2, 6)),
+    ],
+)
+def test_parse(expr: str, expected: tuple[int, int]) -> None:
+    assert parse(expr) == expected
 
 
 @pytest.mark.parametrize(
