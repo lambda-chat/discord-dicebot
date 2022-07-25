@@ -13,13 +13,13 @@ services:
       - type: bind
         source: ~/.gitconfig
         target: /home/docker-user/.gitconfig
-      # for GPG signed commits
-      - type: bind
-        source: ~/.gnupg/
-        target: /home/docker-user/.gnupg
-      - type: bind
-        source: ./gpg-agent.conf
-        target: /home/docker-user/.gnupg/gpg-agent.conf
+      # # for GPG signed commits
+      # - type: bind
+      #   source: ~/.gnupg/
+      #   target: /home/docker-user/.gnupg
+      # - type: bind
+      #   source: ./gpg-agent.conf
+      #   target: /home/docker-user/.gnupg/gpg-agent.conf
       # for GitHub repository (with GitHub CLI)
       - type: bind
         source: ~/.config/gh
