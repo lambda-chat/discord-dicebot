@@ -2,7 +2,7 @@ from collections.abc import Callable
 
 import pytest
 
-from dicebot.math.multidice import parse, roll, roll_by_expr
+from dicebot.multidice import parse, roll, roll_by_expr
 
 
 @pytest.mark.parametrize(
