@@ -10,3 +10,5 @@ cdk.out
 # Local directory setting
 !lib/
 !.eslintrc.js
+
+*.env
