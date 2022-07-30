@@ -6,7 +6,7 @@ import { config } from "dotenv";
 type Environment = {
   "ENGINE_LAMBDA_API_KEY": string;
 }
-const environment = config({ path: "../.engine.env" }).parsed as Environment;
+const environment = config({ path: ".engine.env" }).parsed as Environment;
 
 export class EngineLambdaStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -25,7 +25,7 @@ export class EngineLambdaStack extends cdk.Stack {
       runtime: lambda.Runtime.PYTHON_3_9,
       handler: "app.handler",
       code: lambda.Code.fromAsset(path.join(__dirname, "..", "..", "lambda")),
-      timeout: cdk.Duration.seconds(20),
+      timeout: cdk.Duration.seconds(5),
       retryAttempts: 1,
       environment,
       layers: [lambdaLayer],

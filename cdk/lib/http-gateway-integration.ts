@@ -7,7 +7,7 @@ declare const vpcLink: apigateway.VpcLink;
 
 const httpIntegrationProps: apigateway.HttpIntegrationProps = {
   httpMethod: 'POST',
-  options: {
+  options: {  // FIXME
     cacheKeyParameters: [],
     cacheNamespace: 'httpGatewayCacheNamespace',
     connectionType: apigateway.ConnectionType.INTERNET,

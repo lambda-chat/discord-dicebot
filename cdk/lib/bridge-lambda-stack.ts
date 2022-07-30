@@ -4,9 +4,9 @@ import * as lambda from "aws-cdk-lib/aws-lambda";
 import { config } from "dotenv";
 
 type Environment = {
-  "DISCORD_APP_TOKEN": string;
+  "PUBLIC_KEY": string;
 }
-const environment = config({ path: "../.bridge.env" }).parsed as Environment;
+const environment = config({ path: ".bridge.env" }).parsed as Environment;
 
 export class BridgeLambdaStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -22,16 +22,15 @@ export class BridgeLambdaStack extends cdk.Stack {
     //   description: "Python Packages",
     // });
 
-    const lambdaFn = new lambda.Function(this, "discord-dicebot", {
-      functionName: "discord-dicebot",
+    const lambdaFn = new lambda.Function(this, "discord-dicebot-bridge", {
+      functionName: "discord-dicebot-bridge",
       runtime: lambda.Runtime.NODEJS_14_X,
-      architecture: lambda.Architecture.X86_64,
-      handler: "app.handler",
-      code: lambda.Code.fromAsset(path.join(__dirname, "..", "..", "lambda")),
-      timeout: cdk.Duration.seconds(180),
+      handler: "index.js",  // FIXME
+      code: lambda.Code.fromAsset(path.join(__dirname, "..", "..", "lambda")),  // FIXME
+      timeout: cdk.Duration.seconds(10),
       retryAttempts: 1,
       environment,
-      layers: [lambdaLayer],
+      // layers: [lambdaLayer],
     });
   }
 }
