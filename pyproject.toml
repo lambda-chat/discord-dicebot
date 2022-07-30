@@ -10,6 +10,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+aws-lambda-powertools = "^1.26.7"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
