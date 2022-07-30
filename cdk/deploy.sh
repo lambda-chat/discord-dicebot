@@ -9,7 +9,7 @@ if [ -e $dst ]; then
         poetry export -f requirements.txt > requirements.txt
         pip install -r requirements.txt --target=$dst
         rm requirements.txt
-        src="../src/tweet_cleaner"
+        src="../src/dicebot"
         cp -r $src $dst
     elif [ $ans != "n" ] && [ $ans != "N" ]; then
         exit 1

@@ -8,13 +8,16 @@ type Event = {
   body: string;
 }
 
+const DiscordMessageType = {
+  Ping: 1,
+  AnswerWithInvocation: 4
+}
+
 exports.handler = async (event: Event) => {
-  // Checking signature (requirement 1.)
-  // Your public key can be found on your application in the Developer Portal
-  const PUBLIC_KEY = process.env.PUBLIC_KEY;
+  const PUBLIC_KEY = process.env.PUBLIC_KEY as string;
   const signature = event.headers['x-signature-ed25519']
   const timestamp = event.headers['x-signature-timestamp'];
-  const strBody = event.body; // should be string, for successful sign
+  const strBody = event.body;
 
   const isVerified = nacl.sign.detached.verify(
     Buffer.from(timestamp + strBody),
@@ -24,23 +27,36 @@ exports.handler = async (event: Event) => {
 
   if (!isVerified) {
     return {
-      statusCode: 401,
+      statusCode: 401,  // Unauthorized
       body: JSON.stringify('invalid request signature'),
     };
   }
 
-
-  // Replying to ping (requirement 2.)
   const body = JSON.parse(strBody)
-  if (body.type == 1) {
+
+  // Ping
+  if (body.type == DiscordMessageType.Ping) {
     return {
-      statusCode: 200,
-      body: JSON.stringify({ "type": 1 }),
+      statusCode: 200,  // OK
+      body: JSON.stringify({ "type": DiscordMessageType.Ping }),
     }
   }
 
-  return {
-    statusCode: 400,
-    bocy: JSON.stringify('something went wrong'),
+  // Handle /foo Command
+  if (body.data.name == 'foo') {  // FIXME
+    return JSON.stringify({  // should return without statusCode
+      "type": DiscordMessageType.AnswerWithInvocation,
+      "data": { "content": "engine response here" }  // FIXME
+    })
   }
+  // Handle /bar Command
+  else if (body.data.name == 'bar') {
+    return JSON.stringify({
+      "type": DiscordMessageType.AnswerWithInvocation,
+      "data": { "content": "engine response here" }
+    })
+  }
+
+  // Dafault
+  return { statusCode: 404 };
 };
