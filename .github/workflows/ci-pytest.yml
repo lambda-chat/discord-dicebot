@@ -11,7 +11,7 @@ on:
 jobs:
   pytest:
     name: Run tests with pytest
-    runs-on: bullseye
+    runs-on: ubuntu-latest
     steps: 
       # See: https://github.com/actions/checkout
       - name: Checkout
