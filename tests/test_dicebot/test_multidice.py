@@ -2,7 +2,14 @@ from collections.abc import Callable
 
 import pytest
 
-from dicebot.multidice import parse, roll, roll_by_expr
+from dicebot.multidice import (
+    parse,
+    parse_explode,
+    roll,
+    roll_by_expr,
+    roll_explode,
+    roll_explode_by_expr,
+)
 
 
 @pytest.mark.parametrize(
@@ -42,3 +49,27 @@ def test_parse(expr: str, expected: tuple[int, int]) -> None:
 )
 def test_roll_by_expr(expr: str, condition: Callable[[int], bool]) -> None:
     assert condition(roll_by_expr(expr))
+
+
+@pytest.mark.parametrize(
+    ("num", "face", "condition"),
+    [],
+)
+def test_roll_explode(num: int, face: int, condition: Callable[[int], bool]) -> None:
+    assert condition(roll_explode(num, face))
+
+
+@pytest.mark.parametrize(
+    ("expr", "expected"),
+    [],
+)
+def test_parse_explode(expr: str, expected: tuple[int, int]) -> None:
+    assert parse_explode(expr) == expected
+
+
+@pytest.mark.parametrize(
+    ("expr", "condition"),
+    [],
+)
+def test_roll_by_expr_explode(expr: str, condition: Callable[[int], bool]) -> None:
+    assert condition(roll_explode_by_expr(expr))

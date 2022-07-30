@@ -46,3 +46,15 @@ def roll_by_expr(expr: str) -> int:
     """
     num, face = parse(expr)
     return roll(num, face)
+
+
+def roll_explode(num: int, face: int) -> int:
+    raise NotImplementedError
+
+
+def parse_explode(expr: str) -> tuple[int, int]:
+    raise NotImplementedError
+
+
+def roll_explode_by_expr(expr: str) -> int:
+    raise NotImplementedError
