@@ -46,3 +46,15 @@ def roll_by_expr(expr: str) -> int:
     """
     num, face = parse(expr)
     return roll(num, face)
+
+
+def roll_exclamation(num: int, face: int, life: int) -> int:
+    raise NotImplementedError
+
+
+def parse_exclamation(expr: str) -> tuple[int, int]:
+    raise NotImplementedError
+
+
+def roll_exclamation_by_expr(expr: str) -> int:
+    raise NotImplementedError
