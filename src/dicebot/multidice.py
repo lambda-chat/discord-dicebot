@@ -49,7 +49,32 @@ def roll_by_expr(expr: str) -> int:
 
 
 def roll_exclamation(num: int, face: int, life: int) -> int:
-    raise NotImplementedError
+    """いくつかのダイスを振り，最大値が出た場合には追加のダイスを補充し，出目の和を返す関数
+
+    Args:
+        num (int): ダイスを振る個数
+        face (int): ダイスの面の数
+        life (int): 追加されるダイスの最大値
+
+    Returns:
+        int: ダイスの出目の和
+    """
+    result: list = []
+    while num > 0:
+        new: int = randrange(1, face + 1)
+        result.append(new)
+        if new == face:
+            liferemain: int = life
+            while liferemain > 0:
+                new = randrange(1, face + 1)
+                result.append(new)
+                if new == face:
+                    liferemain = life
+                else:
+                    liferemain -= 1
+        num -= 1
+    print(result)
+    return sum(result)
 
 
 def parse_exclamation(expr: str) -> tuple[int, int]:

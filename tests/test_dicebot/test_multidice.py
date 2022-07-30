@@ -53,7 +53,12 @@ def test_roll_by_expr(expr: str, condition: Callable[[int], bool]) -> None:
 
 @pytest.mark.parametrize(
     ("num", "face", "life", "condition"),
-    [],
+    [
+        (2, 6, 1, lambda res: 2 <= res),
+        (5, 3, 8, lambda res: 5 <= res),
+        (1, 100, 10, lambda res: 1 <= res),
+        (10, 20, 2, lambda res: 10 <= res),
+    ],
 )
 def test_roll_exclamation(
     num: int, face: int, life: int, condition: Callable[[int], bool]
