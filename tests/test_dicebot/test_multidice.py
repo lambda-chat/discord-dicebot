@@ -66,7 +66,12 @@ def test_roll_explode(num: int, face: int, condition: Callable[[int], bool]) -> 
 
 @pytest.mark.parametrize(
     ("expr", "expected"),
-    [],
+    [
+        ("2d6e", (2, 6)),
+        ("17D3e", (17, 3)),
+        ("74d22e", (74, 22)),
+        ("8D26e", (8, 26)),
+    ],
 )
 def test_parse_explode(expr: str, expected: tuple[int, int]) -> None:
     assert parse_explode(expr) == expected

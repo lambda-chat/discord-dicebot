@@ -68,7 +68,23 @@ def roll_explode(num: int, face: int) -> int:
 
 
 def parse_explode(expr: str) -> tuple[int, int]:
-    raise NotImplementedError
+    """ダイスを振る個数とダイスの面の数を返す関数
+
+    Args:
+        expr (str): 標準ダイス表記
+
+    Raises:
+        ValueError: 標準ダイス表記に従っていない場合
+
+    Returns:
+        tuple[int, int]: ダイスを振る個数，ダイスの面の数
+    """
+    if match := fullmatch(r"(?P<num>[0-9]+)[dD](?P<face>[0-9]+)[eE]+", expr):
+        num = int(match.group("num"))
+        face = int(match.group("face"))
+        return num, face
+    else:
+        raise ValueError(expr)
 
 
 def roll_explode_by_expr(expr: str) -> int:
