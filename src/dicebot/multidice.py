@@ -49,6 +49,15 @@ def roll_by_expr(expr: str) -> int:
 
 
 def roll_explode(num: int, face: int) -> int:
+    """いくつかのダイスを振り，最大値が出た場合には追加のダイスを振り，出目の和を返す関数
+
+    Args:
+        num (int): ダイスを振る個数
+        face (int): ダイスの面の数
+
+    Returns:
+        int: ダイスの出目の和
+    """
     result: list = []
     while num > 0:
         new: int = randrange(1, face + 1)
