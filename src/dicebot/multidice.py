@@ -49,7 +49,13 @@ def roll_by_expr(expr: str) -> int:
 
 
 def roll_explode(num: int, face: int) -> int:
-    raise NotImplementedError
+    result: list = []
+    while num > 0:
+        new: int = randrange(1, face + 1)
+        result.append(new)
+        if new < face:
+            num -= 1
+    return sum(result)
 
 
 def parse_explode(expr: str) -> tuple[int, int]:

@@ -53,7 +53,12 @@ def test_roll_by_expr(expr: str, condition: Callable[[int], bool]) -> None:
 
 @pytest.mark.parametrize(
     ("num", "face", "condition"),
-    [],
+    [
+        (2, 6, lambda res: 2 <= res),
+        (31, 3, lambda res: 31 <= res),
+        (1, 2, lambda res: 1 <= res),
+        (10, 20, lambda res: 10 <= res),
+    ],
 )
 def test_roll_explode(num: int, face: int, condition: Callable[[int], bool]) -> None:
     assert condition(roll_explode(num, face))
