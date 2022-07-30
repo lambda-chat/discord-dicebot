@@ -69,8 +69,8 @@ def test_roll_explode(num: int, face: int, condition: Callable[[int], bool]) -> 
     [
         ("2d6e", (2, 6)),
         ("17D3e", (17, 3)),
-        ("74d22e", (74, 22)),
-        ("8D26e", (8, 26)),
+        ("74d22E", (74, 22)),
+        ("8D26E", (8, 26)),
     ],
 )
 def test_parse_explode(expr: str, expected: tuple[int, int]) -> None:
@@ -79,7 +79,12 @@ def test_parse_explode(expr: str, expected: tuple[int, int]) -> None:
 
 @pytest.mark.parametrize(
     ("expr", "condition"),
-    [],
+    [
+        ("2D6e", lambda res: 2 <= res),
+        ("1d2E", lambda res: 1 <= res),
+        ("25D2E", lambda res: 25 <= res),
+        ("20d10e", lambda res: 20 <= res),
+    ],
 )
-def test_roll_by_expr_explode(expr: str, condition: Callable[[int], bool]) -> None:
+def test_roll_explode_by_expr(expr: str, condition: Callable[[int], bool]) -> None:
     assert condition(roll_explode_by_expr(expr))

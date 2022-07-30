@@ -88,4 +88,13 @@ def parse_explode(expr: str) -> tuple[int, int]:
 
 
 def roll_explode_by_expr(expr: str) -> int:
-    raise NotImplementedError
+    """いくつかのダイスを振り，最大値が出た場合には追加のダイスを振り，出目の和を返す関数
+
+    Args:
+        expr (str): 標準ダイス表記
+
+    Returns:
+        int: ダイスの出目の和
+    """
+    num, face = parse_explode(expr)
+    return roll_explode(num, face)
