@@ -10,6 +10,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
+aws-lambda-powertools = "^1.26.7"
+PyNaCl = "^1.5.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
@@ -17,6 +19,7 @@ isort = "^5.9.3"
 pytest = "^6.2.5"
 pyproject-flake8 = "^0.0.1-alpha.2"
 black = "^21.10b0"
+click = "8.0.2"
 ipykernel = "^6.15.1"
 matplotlib = "^3.5.2"
 
