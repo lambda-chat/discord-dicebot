@@ -172,4 +172,4 @@ cython_debug/
 ignore/
 
 # for CDK
-cdk/node_modules
+node_modules/
