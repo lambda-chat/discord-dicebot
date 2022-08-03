@@ -11,7 +11,5 @@ cdk.out
 !lib/
 !.eslintrc.js
 
-*.env
-
 # For Lambda Layer
 python_packages/

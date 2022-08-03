@@ -173,3 +173,4 @@ ignore/
 
 # for CDK
 node_modules/
+*.env
