@@ -31,14 +31,14 @@ export class DiscordDicebotAppStack extends cdk.Stack {
         ],
         allowMethods: [
           // CorsHttpMethod.OPTIONS,
-          // CorsHttpMethod.GET,
+          CorsHttpMethod.GET,
           CorsHttpMethod.POST,
-          // CorsHttpMethod.PUT,
+          CorsHttpMethod.PUT,
           // CorsHttpMethod.PATCH,
           // CorsHttpMethod.DELETE,
         ],
         allowCredentials: true,
-        allowOrigins: ['http://localhost:3000'],
+        allowOrigins: ['http://localhost:3000'],  // FIXME
       },
     });
 
