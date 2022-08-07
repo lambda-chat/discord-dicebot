@@ -27,6 +27,19 @@ else
 fi
 poetry install
 
+# install nvm
+USE_FISH=true
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.bash_profile
+echo '[ -s  "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.bash_profile
+source $HOME/.bash_profile
+nvm install v16.14.2 && npm i -g yarn
+echo "nvm use default" >> $HOME/.bash_profile
+if [ $USE_FISH ]; then
+    fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher fabioantunes/fish-nvm edc/bass"
+    echo "nvm use default" >> ~/.config/fish/config.fish
+fi
+
 # install starship prompt 
 curl -fsSL https://starship.rs/install.sh -o starship_install.sh
 echo $PASSWORD | sudo --stdin sh starship_install.sh -y
