@@ -1,10 +1,9 @@
+import os
 from dataclasses import dataclass
 from enum import Enum
-import os
 from typing import Any, Optional
 
 from aws_lambda_powertools.logging import Logger
-
 from nacl.signing import VerifyKey
 
 logger = Logger(service="dicebot-engine")
